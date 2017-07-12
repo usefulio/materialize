@@ -69,7 +69,7 @@ describe("Select Plugin", function () {
         var secondOption = multipleDropdown.find('li:not(.disabled)').eq(1);
         var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
         firstOption.click();
-        $('body').click();
+        $('body').mousedown();
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
@@ -98,7 +98,7 @@ describe("Select Plugin", function () {
         var thirdOption = multipleDropdown.find('li:not(.disabled)').eq(2);
         secondOption.click();
         thirdOption.click();
-        $('body').click();
+        $('body').mousedown();
 
         setTimeout(function() {
           expect(multipleDropdown).toBeHidden('Should be hidden after choosing item.');
