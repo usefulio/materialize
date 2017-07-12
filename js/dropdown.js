@@ -187,9 +187,10 @@
 
         // Add click close handler to document
         setTimeout(function() {
-          $(document).on('click.'+ activates.attr('id'), function (e) {
+          var eventHandlerString = 'mousedown.'+ activates.attr('id') + ' '
+              + 'touchstart.'+ activates.attr('id');
+          $(document).on(eventHandlerString, function (e) {
             hideDropdown();
-            $(document).off('click.'+ activates.attr('id'));
           });
         }, 0);
       }
@@ -200,7 +201,9 @@
         activates.fadeOut(curr_options.outDuration);
         activates.removeClass('active');
         origin.removeClass('active');
-        $(document).off('click.'+ activates.attr('id'));
+        var eventHandlerString = 'mousedown.'+ activates.attr('id') + ' '
+            + 'touchstart.'+ activates.attr('id');
+        $(document).off(eventHandlerString);
         setTimeout(function() { activates.css('max-height', ''); }, curr_options.outDuration);
       }
 
