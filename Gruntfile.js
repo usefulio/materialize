@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     //  Jasmine
     jasmine: {
       components: {
-	src: [
+        src: [
           'bin/materialize.js'
         ],
         options: {
@@ -138,26 +138,26 @@ module.exports = function(grunt) {
           "js/collapsible.js",
           "js/dropdown.js",
           "js/leanModal.js",
-          "js/materialbox.js",
-          "js/parallax.js",
+          // "js/materialbox.js",
+          // "js/parallax.js",
           "js/tabs.js",
           "js/tooltip.js",
-          "js/waves.js",
+          // "js/waves.js",
           "js/toasts.js",
           "js/sideNav.js",
-          "js/scrollspy.js",
+          // "js/scrollspy.js",
           "js/forms.js",
-          "js/slider.js",
+          // "js/slider.js",
           "js/cards.js",
-          "js/chips.js",
-          "js/pushpin.js",
+          // "js/chips.js",
+          // "js/pushpin.js",
           "js/buttons.js",
           "js/transitions.js",
-          "js/scrollFire.js",
+          // "js/scrollFire.js",
           "js/date_picker/picker.js",
           "js/date_picker/picker.date.js",
-          "js/character_counter.js",
-          "js/carousel.js",
+          // "js/character_counter.js",
+          // "js/carousel.js",
         ],
         // the location of the resulting JS file
         dest: 'dist/js/materialize.js'
@@ -175,26 +175,26 @@ module.exports = function(grunt) {
           "js/collapsible.js",
           "js/dropdown.js",
           "js/leanModal.js",
-          "js/materialbox.js",
-          "js/parallax.js",
+          // "js/materialbox.js",
+          // "js/parallax.js",
           "js/tabs.js",
           "js/tooltip.js",
-          "js/waves.js",
+          // "js/waves.js",
           "js/toasts.js",
           "js/sideNav.js",
-          "js/scrollspy.js",
+          // "js/scrollspy.js",
           "js/forms.js",
-          "js/slider.js",
+          // "js/slider.js",
           "js/cards.js",
-          "js/chips.js",
-          "js/pushpin.js",
+          // "js/chips.js",
+          // "js/pushpin.js",
           "js/buttons.js",
           "js/transitions.js",
-          "js/scrollFire.js",
+          // "js/scrollFire.js",
           "js/date_picker/picker.js",
           "js/date_picker/picker.date.js",
-          "js/character_counter.js",
-          "js/carousel.js",
+          // "js/character_counter.js",
+          // "js/carousel.js",
         ],
         // the location of the resulting JS file
         dest: 'temp/js/materialize.js'
@@ -226,7 +226,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
 
     //  Compress
     compress: {
@@ -261,32 +260,33 @@ module.exports = function(grunt) {
             "collapsible.js",
             "dropdown.js",
             "leanModal.js",
-            "materialbox.js",
-            "parallax.js",
+            // "materialbox.js",
+            // "parallax.js",
             "tabs.js",
             "tooltip.js",
-            "waves.js",
+            // "waves.js",
             "toasts.js",
             "sideNav.js",
-            "scrollspy.js",
+            // "scrollspy.js",
             "forms.js",
-            "slider.js",
+            // "slider.js",
             "cards.js",
-            "chips.js",
-            "pushpin.js",
+            // "chips.js",
+            // "pushpin.js",
             "buttons.js",
             "transitions.js",
-            "scrollFire.js",
+            // "scrollFire.js",
             "date_picker/picker.js",
             "date_picker/picker.date.js",
-            "character_counter.js",
-            "carousel.js",
+            // "character_counter.js",
+            // "carousel.js",
           ], dest: 'materialize-src/js/'},
           {expand: true, cwd: 'dist/js/', src: ['**/*'], dest: 'materialize-src/js/bin/'},
           {expand: true, cwd: './', src: ['LICENSE', 'README.md'], dest: 'materialize-src/'}
 
         ]
       },
+      
 
       starter_template: {
         options: {
@@ -585,6 +585,27 @@ module.exports = function(grunt) {
       'compress:src',
       'compress:starter_template',
       'compress:parallax_template',
+      'replace:version',
+      'replace:readme',
+      'rename:rename_src',
+      'rename:rename_compiled'
+    ]
+  );
+  grunt.registerTask(
+    'goseek',[
+      'lint',
+      'sass:expanded',
+      'sass:min',
+      'postcss:expended',
+      'postcss:min',
+      'concat:dist',
+      'uglify:dist',
+      // 'uglify:extras',
+      // 'usebanner:release',
+      'compress:main',
+      'compress:src',
+      // 'compress:starter_template',
+      // 'compress:parallax_template',
       'replace:version',
       'replace:readme',
       'rename:rename_src',
