@@ -32,7 +32,7 @@
 
       var overlayID = _generateID();
       var $overlay = $('<div class="lean-overlay"></div>');
-      lStack = (++_stack);
+      var lStack = (++_stack);
 
       // Store a reference of the overlay
       $overlay.attr('id', overlayID).css('z-index', 1000 + lStack * 2);
@@ -106,6 +106,9 @@
 
   $.fn.extend({
     closeModal: function(options) {
+      if (options && typeof(options.complete) === "function") {
+        options.complete();
+      }
       var defaults = {
         out_duration: 250,
         complete: undefined
@@ -140,9 +143,9 @@
             $overlay.css({display:"none"});
 
             // Call complete callback
-            if (typeof(options.complete) === "function") {
-              options.complete();
-            }
+            // if (typeof(options.complete) === "function") {
+            //   options.complete();
+            // }
             $overlay.remove();
             _stack--;
           }
@@ -157,9 +160,9 @@
 
               $(this).css('display', 'none');
               // Call complete callback
-              if (typeof(options.complete) === "function") {
-                options.complete();
-              }
+              // if (typeof(options.complete) === "function") {
+              //   options.complete();
+              // }
               $overlay.remove();
               _stack--;
             }

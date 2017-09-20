@@ -1,7 +1,14 @@
+// Un-comment next two lines to enable webpack integration for goSeek in distribution file
+// import $ from 'jquery';
+// import jQuery from 'jquery';
+// export for others scripts to use
+window.$ = $;
+window.jQuery = jQuery;
+
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
   if(window.Package){
-    Materialize = {};
+    var Materialize = {};
   } else {
     window.Materialize = {};
   }

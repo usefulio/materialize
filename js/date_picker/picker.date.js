@@ -1021,7 +1021,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
             // Otherwise, return the created month tag.
             return _.node(
                 'div',
-                ' ',
+                createNavArrow(next),
                 settings.klass[ 'nav' + ( next ? 'Next' : 'Prev' ) ] + (
 
                     // If the focused month is outside the range, disabled the button.
@@ -1166,15 +1166,19 @@ DatePicker.prototype.nodes = function( isOpen ) {
 
             // Otherwise just return the year focused
             return _.node( 'div', focusedYear, settings.klass.year )
-        } //createYearLabel
-
+        }, //createYearLabel
+        createNavArrow = function(next) {
+            if (next)
+                return _.node('i', 'arrow_forward', 'material-icons');
+            else return _.node('i', 'arrow_back', 'material-icons');
+        },
 
         // Materialize modified
         createDayLabel = function() {
                 if (selectedObject != null)
                     return _.node( 'div', selectedObject.date)
                 else return _.node( 'div', nowObject.date)
-            }
+            },
         createWeekdayLabel = function() {
             var display_day;
 
